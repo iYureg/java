@@ -6,6 +6,7 @@
 public class convert {
 
     public static void main(String[] args) {
+        // можно перобразовать
         int i = 123; double d = i;
         System.out.println(i); // 123
         System.out.println(d); // 123.0
@@ -22,5 +23,10 @@ public class convert {
         System.out.println(b); // 123
         b = Byte.parseByte("1234");// error // от 0 до 255
         System.out.println(b); // NumberFormatException: Value out of range
+
+
+        // HO !
+        // int[] a = new int[10];
+        // double[] d = a; // ИЗУЧАЕМ ковариантность и контравариантность
     }
 }
