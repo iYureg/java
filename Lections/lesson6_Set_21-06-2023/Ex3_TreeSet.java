@@ -4,6 +4,10 @@ import java.util.TreeSet;
 /**
  * Ex3_TreeSet
  * 
+ * ● В основе HashMap.
+ * ● Упорядочен по возрастанию.
+ * ● null’ов быть не может.
+ * 
  * first()
  * last()
  * headSet(E)
