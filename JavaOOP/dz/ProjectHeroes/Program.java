@@ -1,7 +1,6 @@
 package ProjectHeroes;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Random;
 
@@ -16,43 +15,54 @@ public class Program {
 
     public static void main(String[] args) {
 
-        List<BaseCharacter> characters = new ArrayList<>();
+        List<BaseCharacter> team1 = getTeam();
+        List<BaseCharacter> team2 = getTeam();
+
+        team1.forEach(v -> System.out.println(v.getInfo()));
+
+        System.out.println("--------------");
+
+        team2.forEach(v -> System.out.println(v.getInfo()));
+
+    }
+
+    public static ArrayList<BaseCharacter> getTeam() {
+        Random r = new Random();
+        List<BaseCharacter> team = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            String value = Types.values()[new Random().nextInt(6)].toString();
+            String value = Types.values()[r.nextInt(7)].toString();
             switch (value) {
                 case "Mage": {
-                    characters.add(i, new Mage(value + "_" + i));
+                    team.add(i, new Mage(value + "_" + i));
                     break;
                 }
                 case "Monk": {
-                    characters.add(i, new Monk(value + "_" + i));
+                    team.add(i, new Monk(value + "_" + i));
                     break;
                 }
                 case "Rogue": {
-                    characters.add(i, new Rogue(value + "_" + i));
+                    team.add(i, new Rogue(value + "_" + i));
                     break;
                 }
                 case "Spearman": {
-                    characters.add(i, new Spearman(value + "_" + i));
+                    team.add(i, new Spearman(value + "_" + i));
                     break;
                 }
                 case "Sniper": {
-                    characters.add(i, new Sniper(value + "_" + i));
+                    team.add(i, new Sniper(value + "_" + i));
                     break;
                 }
                 case "Crossbowman": {
-                    characters.add(i, new Crossbowman(value + "_" + i));
+                    team.add(i, new Crossbowman(value + "_" + i));
                     break;
                 }
                 case "Worker": {
-                    characters.add(i, new Support(value + "_" + i));
+                    team.add(i, new Support(value + "_" + i));
                     break;
                 }
             }
         }
-        for (BaseCharacter Char : characters) {
-            System.out.println(Char.getInfo());
-        }
+        return (ArrayList<BaseCharacter>) team;
     }
 }
