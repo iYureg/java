@@ -1,11 +1,11 @@
-package ProjectHeroes;
+package ProjectHeroes.Magic;
 
 import ProjectHeroes.Interface.CharacterInterface;
 
-public class Support extends BaseCharacter implements CharacterInterface {
-    public Support(String name) {
+public class Monk extends MagicChar implements CharacterInterface {
+    public Monk(String name) {
         super(name);
-        this.damage = 0;
+
     }
 
     @Override

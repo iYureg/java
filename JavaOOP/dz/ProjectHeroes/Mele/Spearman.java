@@ -1,11 +1,16 @@
-package ProjectHeroes;
+package ProjectHeroes.Mele;
 
 import ProjectHeroes.Interface.CharacterInterface;
 
-public class Support extends BaseCharacter implements CharacterInterface {
-    public Support(String name) {
+public class Spearman extends CloseChar implements CharacterInterface {
+
+    int armor;
+
+    public Spearman(String name) {
         super(name);
-        this.damage = 0;
+
+        this.speed = super.baseSpeed;
+        this.armor = 30;
     }
 
     @Override

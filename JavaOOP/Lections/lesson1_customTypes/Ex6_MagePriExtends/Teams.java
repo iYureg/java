@@ -3,6 +3,8 @@ package JavaOOP.Lections.lesson1_customTypes.Ex6_MagePriExtends;
 import java.util.Random;
 
 public class Teams {
+
+    static HashSet = 
     public static void main(String[] args) {
         int teamCount = 10;
         Random rand = new Random();

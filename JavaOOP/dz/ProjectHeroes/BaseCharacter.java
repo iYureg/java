@@ -10,7 +10,7 @@ public abstract class BaseCharacter {
     int hp;
     protected int baseDmg = 30;
     int damage;
-    protected  int baseFP = 3;
+    protected int baseFP = 3;
     int forcePoint;
 
     public BaseCharacter(String name) {
@@ -22,7 +22,12 @@ public abstract class BaseCharacter {
         this.forcePoint = baseFP;
     }
 
-    public boolean isAlive(){
-        return this.isAlive;
+    public String getName() {
+        return this.name;
     }
+
+    public String getInfo() {
+        return this.getClass().toString();
+    }
+
 }

@@ -1,33 +1,58 @@
 package ProjectHeroes;
 
+import java.util.ArrayList;
+
+import java.util.List;
+import java.util.Random;
+
+import ProjectHeroes.Magic.Mage;
+import ProjectHeroes.Magic.Monk;
+import ProjectHeroes.Mele.Rogue;
+import ProjectHeroes.Mele.Spearman;
+import ProjectHeroes.Rengers.Crossbowman;
+import ProjectHeroes.Rengers.Sniper;
+
 public class Program {
+
     public static void main(String[] args) {
-        Mage mage = new Mage("Маг");
-        System.out.println(mage.toString());
-        System.out.println(mage.isAlive());
 
-        Monk monk = new Monk("Монах");
-        System.out.println(monk.toString());
-        System.out.println(monk.isAlive());
+        List<BaseCharacter> characters = new ArrayList<>();
 
-        Sniper sniper = new Sniper("Лучник");
-        System.out.println(sniper.toString());
-        System.out.println(sniper.isAlive());
-
-        Crossbowman crossbowman = new Crossbowman("Арбалет");
-        System.out.println(crossbowman.toString());
-        System.out.println(crossbowman.isAlive());
-
-        Rogue rogue = new Rogue("Рога");
-        System.out.println(rogue.toString());
-        System.out.println(rogue.isAlive());
-
-        Spearman spearman = new Spearman("Копьё");
-        System.out.println(spearman.toString());
-        System.out.println(spearman.isAlive());
-
-        Support support = new Support("Санчо");
-        System.out.println(support.toString());
-        System.out.println(support.isAlive());
+        for (int i = 0; i < 10; i++) {
+            String value = Types.values()[new Random().nextInt(6)].toString();
+            switch (value) {
+                case "Mage": {
+                    characters.add(i, new Mage(value + "_" + i));
+                    break;
+                }
+                case "Monk": {
+                    characters.add(i, new Monk(value + "_" + i));
+                    break;
+                }
+                case "Rogue": {
+                    characters.add(i, new Rogue(value + "_" + i));
+                    break;
+                }
+                case "Spearman": {
+                    characters.add(i, new Spearman(value + "_" + i));
+                    break;
+                }
+                case "Sniper": {
+                    characters.add(i, new Sniper(value + "_" + i));
+                    break;
+                }
+                case "Crossbowman": {
+                    characters.add(i, new Crossbowman(value + "_" + i));
+                    break;
+                }
+                case "Worker": {
+                    characters.add(i, new Support(value + "_" + i));
+                    break;
+                }
+            }
+        }
+        for (BaseCharacter Char : characters) {
+            System.out.println(Char.getInfo());
+        }
     }
 }

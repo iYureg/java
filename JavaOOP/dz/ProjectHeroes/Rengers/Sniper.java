@@ -1,11 +1,12 @@
-package ProjectHeroes;
+package ProjectHeroes.Rengers;
 
 import ProjectHeroes.Interface.CharacterInterface;
 
-public class Support extends BaseCharacter implements CharacterInterface {
-    public Support(String name) {
+public class Sniper extends RangeChar implements CharacterInterface {
+
+    public Sniper(String name) {
         super(name);
-        this.damage = 0;
+        this.range = super.baseRange + 5;
     }
 
     @Override
@@ -18,4 +19,5 @@ public class Support extends BaseCharacter implements CharacterInterface {
     public String getInfo() {
         return this.getClass().getTypeName() + " " + this.getName();
     }
+
 }

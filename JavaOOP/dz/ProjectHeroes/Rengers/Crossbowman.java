@@ -1,11 +1,11 @@
-package ProjectHeroes;
+package ProjectHeroes.Rengers;
 
 import ProjectHeroes.Interface.CharacterInterface;
 
-public class Support extends BaseCharacter implements CharacterInterface {
-    public Support(String name) {
+public class Crossbowman extends RangeChar implements CharacterInterface {
+    public Crossbowman(String name) {
         super(name);
-        this.damage = 0;
+
     }
 
     @Override
