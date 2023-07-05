@@ -1,4 +1,4 @@
-package ProjectHeroes;
+package ProjectHeroes.units;
 
 public enum Types {
 
