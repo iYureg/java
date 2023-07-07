@@ -1,4 +1,4 @@
-package JavaOOP.Lections.lesson3_standardInterfaces.Ex6;
+package JavaOOP.Lections.lesson3_standardInterfaces.Ex6_equals;
 
 // три вода
 public class Program {

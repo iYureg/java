@@ -1,3 +1,5 @@
+package dz.sem2;
+
 //Сравнить время выполнения замены символа "а" на "А"
 // любой строки содержащей > 1000 символов средствами String и StringBuilder.
 public class SpeedToster {
@@ -9,15 +11,14 @@ public class SpeedToster {
         }
         StringBuilder a2 = new StringBuilder(a1);
 
-
         long timer = System.currentTimeMillis();
         a1.replaceAll("a", "a".toUpperCase());
         System.out.println("String time: " + (System.currentTimeMillis() - timer) + "ms");
 
         timer = System.currentTimeMillis();
         for (int i = 0; i < a2.length(); i++) {
-            a2.replace(a2.indexOf("a"),a2.indexOf("a")+1,"a".toUpperCase());
+            a2.replace(a2.indexOf("a"), a2.indexOf("a") + 1, "a".toUpperCase());
         }
-        System.out.println("StringBuilder time: " + (System.currentTimeMillis() - timer) + "ms !!!" );
+        System.out.println("StringBuilder time: " + (System.currentTimeMillis() - timer) + "ms !!!");
     }
 }
