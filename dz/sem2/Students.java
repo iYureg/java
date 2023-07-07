@@ -1,3 +1,5 @@
+package dz.sem2;
+
 /*
     Дана json-строка (можно сохранить в файл и читать из файла)
     [{"фамилия":"Иванов","оценка":"5","предмет":"Математика"},
@@ -14,8 +16,8 @@ public class Students {
     static String data = "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"}," +
             "{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"}," +
             "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
 
         String[] str = "Студент получил по предмету".split(" ", 3);
         String[] studs = myHoneyJsonParser(data).toString().split("},");
@@ -27,23 +29,24 @@ public class Students {
                 result
                         .append(str[j])
                         .append(new StringBuilder(fields[j]
-                                .replace("\""," "))
-                                .delete(0,fields[j].indexOf(":")+1));
+                                .replace("\"", " "))
+                                .delete(0, fields[j].indexOf(":") + 1));
             }
             System.out.println(result
-                    .delete(result.lastIndexOf(" "),result.lastIndexOf(" ")+1)
+                    .delete(result.lastIndexOf(" "), result.lastIndexOf(" ") + 1)
                     .append("."));
         }
     }
+
     static StringBuilder myHoneyJsonParser(String s) {
         StringBuilder result = new StringBuilder(s);
         result
-                .delete(result.indexOf("["),result.indexOf("[")+1)
-                .delete(result.lastIndexOf("]"),result.lastIndexOf("]")+1)
-                .replace(result.indexOf("{"),result.indexOf("{")+1,"")
-                .replace(result.indexOf("{"),result.indexOf("{")+1,"")
-                .replace(result.indexOf("{"),result.indexOf("{")+1,"")
-                .delete(result.lastIndexOf("}"),result.lastIndexOf("}")+1);
+                .delete(result.indexOf("["), result.indexOf("[") + 1)
+                .delete(result.lastIndexOf("]"), result.lastIndexOf("]") + 1)
+                .replace(result.indexOf("{"), result.indexOf("{") + 1, "")
+                .replace(result.indexOf("{"), result.indexOf("{") + 1, "")
+                .replace(result.indexOf("{"), result.indexOf("{") + 1, "")
+                .delete(result.lastIndexOf("}"), result.lastIndexOf("}") + 1);
 
         return result;
     }
