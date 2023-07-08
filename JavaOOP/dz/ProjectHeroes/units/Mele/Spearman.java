@@ -9,9 +9,9 @@ public class Spearman extends CloseChar {
     int armor;
     public Spearman(String name,int x, int y) {
         super(name,x, y);
-
-        this.speed = super.baseSpeed;
+        this.type = "spearman";
         this.armor = 30;
+        this.forcePoint = 5;
     }
     @Override
     public String getInfo() {

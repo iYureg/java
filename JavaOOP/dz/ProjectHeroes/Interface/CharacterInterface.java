@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * CharacterInterface
  */
 public interface CharacterInterface {
-    void step(ArrayList<BaseCharacter> enemy);
+    void step(ArrayList<BaseCharacter> enemy, ArrayList<BaseCharacter> allys);
 
     String getInfo();
 }

@@ -10,18 +10,41 @@ public class Program {
 
     public static void main(String[] args) {
 
-        List<BaseCharacter> spartak = TeamGenerator.getTeam(0, 10);
-        List<BaseCharacter> cska = TeamGenerator.getTeam(9, 10);
+        List<BaseCharacter> spartak = new TeamGenerator<BaseCharacter>().getTeam(0, 11);
+        List<BaseCharacter> cska = new TeamGenerator<BaseCharacter>().getTeam(9, 11);
 
-        spartak.forEach(v -> v.step((ArrayList<BaseCharacter>) cska));
+        List<BaseCharacter> allChars = new ArrayList<>();
+        allChars.addAll(spartak);
+        allChars.addAll(cska);
+        allChars.sort((v1, v2) -> v1.getFP() - v2.getFP());
+        // allChars.sort((v1, v2) -> v2.getFP() - v1.getFP());
 
-        System.out.println("-------------------------------------------------------");
+        allChars.forEach(ch -> {
+            if (spartak.contains(ch)) {
+                ch.step((ArrayList<BaseCharacter>) cska, (ArrayList<BaseCharacter>) spartak);
+            } else {
+                ch.step((ArrayList<BaseCharacter>) spartak, (ArrayList<BaseCharacter>) cska);
+            }
+        });
 
-        cska.forEach(v -> v.step((ArrayList<BaseCharacter>) spartak));
-        System.out.println();
-        System.out.println();
+        // System.out.println();
+        // System.out.println();
 
-        spartak.get(2).step((ArrayList<BaseCharacter>) cska);
-        cska.get(3).step((ArrayList<BaseCharacter>) spartak);
+        // compareByFP(cska);
+        // compareByFP(spartak);
+
+        // spartak.forEach(v -> v.step((ArrayList<BaseCharacter>) cska,
+        // (ArrayList<BaseCharacter>) spartak));
+        // System.out.println("-".repeat(60));
+        // cska.forEach(v -> v.step((ArrayList<BaseCharacter>) spartak,
+        // (ArrayList<BaseCharacter>) cska));
+
     }
+
+    // private static void compareByFP(List<BaseCharacter> team){
+    // team.sort((o1, o2) -> - o1.getFP() - o2.getFP());
+    // }
+    // private static void compareByHP(List<BaseCharacter> team){
+    // team.sort((o1, o2) -> o1.getHp() - o2.getHp());
+    // }
 }

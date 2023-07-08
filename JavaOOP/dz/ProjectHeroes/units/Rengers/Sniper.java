@@ -8,7 +8,9 @@ import java.util.ArrayList;
 public class Sniper extends RangeChar {
     public Sniper(String name, int x, int y) {
         super(name, x, y);
-        this.range = super.baseRange + 5;
+        this.type = "sniper";
+        this.ammo = 11;
+        this.forcePoint = 2;
     }
     @Override
     public String getInfo() {
