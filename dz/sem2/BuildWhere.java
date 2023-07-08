@@ -1,3 +1,5 @@
+package dz.sem2;
+
 //        Дана строка sql-запроса "select * from students where ".
 //        Сформируйте часть WHERE этого запроса, используя StringBuilder.
 //        Данные для фильтрации приведены ниже в виде json-строки.
@@ -18,12 +20,12 @@ public class BuildWhere {
         StringBuilder sb = new StringBuilder(request);
         for (int i = 0; i < strs.length; i++) {
             if (!strs[i].contains("null")) {
-                sb.append(strs[i].replace(":", "='").replace("\"",""))
+                sb.append(strs[i].replace(":", "='").replace("\"", ""))
                         .append("' AND");
 
             }
         }
-        request = sb.delete(sb.length()-4,sb.length()).toString();
+        request = sb.delete(sb.length() - 4, sb.length()).toString();
         System.out.println(request);
     }
 }
