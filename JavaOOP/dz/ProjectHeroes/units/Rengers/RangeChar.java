@@ -13,8 +13,9 @@ public abstract class RangeChar extends BaseCharacter {
         this.ammo = 10;
     }
 
-    @Override public void Attack(BaseCharacter target){
-        super.Attack(target);
+    @Override
+    public String getInfo() {
+        return super.getInfo() + this.ammo + "\u27BC ";
     }
     @Override
     public void step(ArrayList<BaseCharacter> enemy, ArrayList<BaseCharacter> allys) {
@@ -24,21 +25,11 @@ public abstract class RangeChar extends BaseCharacter {
         BaseCharacter target = getTarget(enemy);
         target.getDamage(this.damage);
         for(BaseCharacter ch : allys) {
-            if(ch.getType().equals("support")){
+            if(ch.getType().equals("support") && !((Support)(ch)).getBusy() && ch.getHp() > 0){
+                ((Support)(ch)).setBusy();
                 return;
             }
         }
         this.ammo--;
-        System.out.println(this.getName()+ " Наносит -> " +
-                this.damage + "dmg: " +
-                target.getName() + " получает урон: " +
-                target.getHp()+"HP " + " Ammo: " +
-                this.getAmmo() + " FP: " +
-                this.getFP());
-    }
-    protected int getAmmo(){return this.ammo;}
-    protected boolean checkSupport(BaseCharacter ally) {
-        return ally.getType() == "support";
-
     }
 }

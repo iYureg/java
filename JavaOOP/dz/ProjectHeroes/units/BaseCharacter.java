@@ -1,14 +1,14 @@
 package ProjectHeroes.units;
 
-import ProjectHeroes.source.Coord;
 import ProjectHeroes.Interface.CharacterInterface;
+import ProjectHeroes.view.AnsiColors;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseCharacter implements CharacterInterface {
     protected Random r = new Random();
-    protected String id;
+
     protected String name;
     protected String type;
     protected boolean isAlive;
@@ -23,16 +23,8 @@ public abstract class BaseCharacter implements CharacterInterface {
     protected int forcePoint;
     protected Coord point;
 
-    public BaseCharacter(String name , String type) {
-        this.id = (r.nextInt(Short.MAX_VALUE)) + name + (r.nextInt(Short.MAX_VALUE));
-        this.name = name;
-        this.isAlive = true;
-        this.hp = maxHp;
-        this.damage = minDmg;
-        this.forcePoint = baseFP;
-    }
+
     public BaseCharacter(String name, int x, int y) {
-        this.id = (r.nextInt(Short.MAX_VALUE)) + name + (r.nextInt(Short.MAX_VALUE));
         this.name = name;
         this.isAlive = true;
         this.hp = maxHp;
@@ -42,22 +34,40 @@ public abstract class BaseCharacter implements CharacterInterface {
     }
 
     public void getDamage(int dmg){
-         this.hp -= dmg;
+
+        if (this.hp <= 0) {
+            this.isAlive = false;
+        }else {
+            this.hp -= dmg;
+        }
     }
 
+    @Override
+    public String toString() {
+       return super.getClass().getSimpleName();
+    }
+    public void setCordX(int x){
+        this.point.x += x;
+    }
     public int getHp(){return this.hp;}
-    public void Attack(BaseCharacter target){target.hp -= this.damage;}
+    public void setHp(int HP){
+        this.hp = HP + this.hp > maxHp ? maxHp : this.hp + HP;
+    }
     public int getFP(){return this.forcePoint;}
-    public String getCoord(){
-        return String.format("X: %d, Y: %d", this.point.x, this.point.y);
+    public int[] getCoord(){
+        return new int[]{this.point.x, this.point.y};
     }
     public String getName() {
         return this.name;
     }
-    public String getInfo() {
-        return this.getClass().toString();
+
+    public String getInfo(){
+        return this.name + " - " +
+                this.hp + AnsiColors.ANSI_RED + "\u2661 - " + AnsiColors.ANSI_RESET +
+                this.forcePoint + "\u2694 ";
     }
     public String getType() { return this.type; }
+
 
     protected BaseCharacter getTarget(ArrayList<BaseCharacter> enemy) {
 
@@ -69,10 +79,7 @@ public abstract class BaseCharacter implements CharacterInterface {
                 index = i;
             }
         }
+
         return  enemy.get(index);
     }
-
-//    protected BaseCharacter getAlly(ArrayList<BaseCharacter> allys){
-//
-//    }
 }

@@ -1,4 +1,4 @@
-package ProjectHeroes.source;
+package ProjectHeroes.units;
 
 public class Coord {
 
