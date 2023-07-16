@@ -1,7 +1,7 @@
 package ProjectHeroes.units.Rengers;
 
 import ProjectHeroes.units.BaseCharacter;
-import ProjectHeroes.units.Support;
+import ProjectHeroes.units.Worker;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public abstract class RangeChar extends BaseCharacter {
 
     public RangeChar(String name,int x, int y) {
         super(name, x, y);
-        this.ammo = 10;
+        this.ammo = 50;
     }
 
     @Override
@@ -23,10 +23,10 @@ public abstract class RangeChar extends BaseCharacter {
         if ( this.ammo == 0 ) return;
 
         BaseCharacter target = getTarget(enemy);
-        target.getDamage(this.damage);
+        if(target.isAlive()) target.getDamage(this.damage);
         for(BaseCharacter ch : allys) {
-            if(ch.getType().equals("support") && !((Support)(ch)).getBusy() && ch.getHp() > 0){
-                ((Support)(ch)).setBusy();
+            if(ch.getType().equals("support") && !((Worker)(ch)).getBusy() && ch.getHp() > 0){
+                ((Worker)(ch)).setBusy();
                 return;
             }
         }

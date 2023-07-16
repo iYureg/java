@@ -1,7 +1,6 @@
 package ProjectHeroes.units.Magic;
 
 import ProjectHeroes.units.BaseCharacter;
-import ProjectHeroes.units.Support;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,7 +13,7 @@ public abstract class MagicChar extends BaseCharacter {
     public MagicChar(String name, int x, int y) {
         super(name,x ,y);
         this.heal = r.nextInt(20, 31);
-        this.mana = 100;
+        this.mana = 300;
     }
 
     public void healing(BaseCharacter ch){
@@ -35,7 +34,7 @@ public abstract class MagicChar extends BaseCharacter {
         int pacientIndex = allys.size() + 10;
         int minHp = super.maxHp;
         for (int i = 0; i < allys.size() ; i++) {
-            if(allys.get(i).getHp() < minHp){
+            if(allys.get(i).getHp() < minHp && allys.get(i).isAlive()){
                 minHp = allys.get(i).getHp();
                 pacientIndex = i;
             }
@@ -45,8 +44,10 @@ public abstract class MagicChar extends BaseCharacter {
             healing(allys.get(pacientIndex));
         } else {
             BaseCharacter target = getTarget(enemy);
-            target.getDamage(super.minDmg);
-            this.mana -= 10;
+            if (target.isAlive()){
+                target.getDamage(super.minDmg);
+                this.mana -= 10;
+            }
         }
     }
 }

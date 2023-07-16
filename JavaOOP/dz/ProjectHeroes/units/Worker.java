@@ -4,13 +4,13 @@ import ProjectHeroes.Interface.CharacterInterface;
 
 import java.util.ArrayList;
 
-public class Support extends BaseCharacter implements CharacterInterface {
+public class Worker extends BaseCharacter implements CharacterInterface {
 
     protected boolean busy;
-    public Support(String name, int x, int y) {
+    public Worker(String name, int x, int y) {
         super(name, x ,y);
         this.damage = 0;
-        this.type = "support";
+        this.type = "worker";
         this.forcePoint = 10;
         this.busy = false;
 

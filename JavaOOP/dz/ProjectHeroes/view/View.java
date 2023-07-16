@@ -36,13 +36,13 @@ public class View {
         String out = "| ";
         for (BaseCharacter human : Program.allChars) {
             if (human.getCoord()[0] == x && human.getCoord()[1] == y) {
-                if (human.getHp() == 0) {
+                if (human.getHp() <= 0) {
                     out = "|" + (AnsiColors.ANSI_YELLOW_BACKGROUND + human.toString().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
                 }
-                if (Program.spartak.contains(human))
+                if (Program.reds.contains(human))
                     out = "|" + (AnsiColors.ANSI_RED + human.toString().charAt(0) + AnsiColors.ANSI_RESET);
-                if (Program.cska.contains(human))
+                if (Program.blues.contains(human))
                     out = "|" + (AnsiColors.ANSI_BLUE + human.toString().charAt(0) + AnsiColors.ANSI_RESET);
                 break;
             }
@@ -61,17 +61,17 @@ public class View {
         System.out.print("_".repeat(l[0] * 2));
         System.out.println("");
         System.out.print(top10 + "    ");
-        System.out.print(AnsiColors.ANSI_RED + ":\tСпартак" + AnsiColors.ANSI_RESET + " Москва" + AnsiColors.ANSI_RESET);
+        System.out.print(AnsiColors.ANSI_RED + ":\tRed" + AnsiColors.ANSI_RESET + " Team" + AnsiColors.ANSI_RESET);
         //for (int i = 0; i < l[0]-9; i++)
         System.out.print(" ".repeat(l[0] - 9));
-        System.out.println(AnsiColors.ANSI_RED + "ПФК " + AnsiColors.ANSI_BLUE + "ЦСКА" + AnsiColors.ANSI_RESET);
+        System.out.println(AnsiColors.ANSI_BLUE + "Blue" + AnsiColors.ANSI_RESET + " Team" + AnsiColors.ANSI_RESET);
         for (int i = 1; i < 11; i++) {
             System.out.print(getChar(1, i));
         }
         System.out.print("|    ");
-        System.out.print(Program.spartak.get(0).getInfo());
-        tabSetter(Program.spartak.get(0).getInfo().length(), l[0]);
-        System.out.println(Program.cska.get(0).getInfo());
+        System.out.print(Program.reds.get(0).getInfo());
+        tabSetter(Program.reds.get(0).getInfo().length(), l[0]);
+        System.out.println(Program.blues.get(0).getInfo());
         System.out.println(midl10);
 
         for (int i = 2; i < 10; i++) {
@@ -79,18 +79,18 @@ public class View {
                 System.out.print(getChar(i, j));
             }
             System.out.print("|    ");
-            System.out.print(Program.spartak.get(i - 1).getInfo());
-            tabSetter(Program.spartak.get(i - 1).getInfo().length(), l[0]);
-            System.out.println(Program.cska.get(i - 1).getInfo());
+            System.out.print(Program.reds.get(i - 1).getInfo());
+            tabSetter(Program.reds.get(i - 1).getInfo().length(), l[0]);
+            System.out.println(Program.blues.get(i - 1).getInfo());
             System.out.println(midl10);
         }
         for (int j = 1; j < 11; j++) {
             System.out.print(getChar(10, j));
         }
         System.out.print("|    ");
-        System.out.print(Program.spartak.get(9).getInfo());
-        tabSetter(Program.spartak.get(9).getInfo().length(), l[0]);
-        System.out.println(Program.cska.get(9).getInfo());
+        System.out.print(Program.reds.get(9).getInfo());
+        tabSetter(Program.reds.get(9).getInfo().length(), l[0]);
+        System.out.println(Program.blues.get(9).getInfo());
         System.out.println(bottom10);
     }
 }

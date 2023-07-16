@@ -1,9 +1,9 @@
 package ProjectHeroes.units;
 
 import ProjectHeroes.units.Magic.Mage;
-import ProjectHeroes.units.Magic.Monk;
+import ProjectHeroes.units.Magic.Priest;
 import ProjectHeroes.units.Mele.Rogue;
-import ProjectHeroes.units.Mele.Spearman;
+import ProjectHeroes.units.Mele.Guardian;
 import ProjectHeroes.units.Rengers.Crossbowman;
 import ProjectHeroes.units.Rengers.Sniper;
 
@@ -14,14 +14,14 @@ import java.util.Random;
 
 public class TeamGenerator <T extends BaseCharacter> {
     private static Random r = new Random();
-    private static String[] types = {"Mage","Monk","Rogue","Spearman","Sniper","Crossbowman","Worker"};
+    private static String[] types = {"Mage","Priest","Rogue","Guardian","Sniper","Crossbowman","Worker"};
 
 
 
 
    public ArrayList<T> getTeam(int side, int size) {
         List<T> team = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i <= size; i++) {
             String value = types[r.nextInt(7)];
 
             switch (value) {
@@ -29,16 +29,16 @@ public class TeamGenerator <T extends BaseCharacter> {
                     team.add((T) new Mage(value + "_" + i, side, i));
                     break;
                 }
-                case "Monk": {
-                    team.add((T) new Monk(value + "_" + i, side, i));
+                case "Priest": {
+                    team.add((T) new Priest(value + "_" + i, side, i));
                     break;
                 }
                 case "Rogue": {
                     team.add((T) new Rogue(value + "_" + i, side, i));
                     break;
                 }
-                case "Spearman": {
-                    team.add((T) new Spearman(value + "_" + i, side, i));
+                case "Guardian": {
+                    team.add((T) new Guardian(value + "_" + i, side, i));
                     break;
                 }
                 case "Sniper": {
@@ -50,7 +50,7 @@ public class TeamGenerator <T extends BaseCharacter> {
                     break;
                 }
                 case "Worker": {
-                    team.add((T) new Support(value + "_" + i, side, i));
+                    team.add((T) new Worker(value + "_" + i, side, i));
                     break;
                 }
             }
