@@ -20,7 +20,7 @@ public class Toy {
     public Toy(String name) {
         this.id = name + r.nextInt(Integer.MAX_VALUE);
         this.name = name;
-        this.quantity = 1;
+        this.quantity = r.nextInt(1, 10);
         this.chance = r.nextInt(100);
     }
 
