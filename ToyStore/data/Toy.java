@@ -24,6 +24,14 @@ public class Toy {
         this.chance = r.nextInt(100);
     }
 
+    public String getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     public void setChance(int chance) {
         this.chance = chance;
     }

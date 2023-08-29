@@ -10,6 +10,7 @@ public class Store extends ArrayList<Toy> {
 
     public Store() {
         super();
+        this.cart = new Cart();
     }
 
     public boolean checkQuantity(int index) {
@@ -20,13 +21,12 @@ public class Store extends ArrayList<Toy> {
     }
 
     public void addToCart(int index) {
-        try {
-            if (checkQuantity(index)) {
-                cart.add(this.get(index).getId() + ", " + this.get(index).getName());
-                this.get(index).setQuantity(this.get(index).getQuantity() - 1);
-            }
-        } catch (quantityException e) {
-            System.out.println(e.getMessage());
+
+        if (checkQuantity(index)) {
+            this.cart.add(this.get(index).getId() + ", " + this.get(index).getName());
+            this.get(index).setQuantity(this.get(index).getQuantity() - 1);
+        } else {
+            throw new quantityException(this.get(index).getQuantity());
         }
     }
 }
