@@ -1,4 +1,4 @@
-package Exceptions.dz;
+package Exceptions.dz.sem3;
 
 import java.io.BufferedWriter;
 import java.io.File;
